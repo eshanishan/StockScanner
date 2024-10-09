@@ -6,7 +6,7 @@ api_key = apikeys['key1']
 #api_key = apikeys['key2']
 
 def get_overview_data(symbol):
-    url = f'https://www.alphavantage.co/query?function=CASH_FLOW&symbol={symbol}&apikey={api_key}'
+    url = f'https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={api_key}'
     response = requests.get(url)
     data = response.json()
     return data

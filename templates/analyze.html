@@ -8,84 +8,32 @@
     <h1>Analyze Data</h1>
     <div class="container">
         <div class="overview">
-        <h2>Overview {{ overview_data1['symbol'] }}</h2>
+        <h2>Overview {{ overview_data1['Name'] }}</h2>
         <ul>
-            <li><strong>Symbol:</strong> {{ overview_data1['symbol'] }}</li>
-            {% if 'annualReports' in overview_data1 %}
-                {% set first_report = overview_data1['annualReports'][0] %}
-                <li><strong>Fiscal Date Ending:</strong> {{ first_report['fiscalDateEnding'] }}</li>
-                <li><strong>Reported Currency:</strong> {{ first_report['reportedCurrency'] }}</li>
-                <li><strong>Operating Cashflow:</strong> {{ first_report['operatingCashflow'] }}</li>
-                <li><strong>Payments for Operating Activities:</strong> {{ first_report['paymentsForOperatingActivities'] }}</li>
-                <li><strong>Proceeds from Operating Activities:</strong> {{ first_report['proceedsFromOperatingActivities'] }}</li>
-                <li><strong>Change in Operating Liabilities:</strong> {{ first_report['changeInOperatingLiabilities'] }}</li>
-                <li><strong>Change in Operating Assets:</strong> {{ first_report['changeInOperatingAssets'] }}</li>
-                <li><strong>Depreciation, Depletion, and Amortization:</strong> {{ first_report['depreciationDepletionAndAmortization'] }}</li>
-                <li><strong>Capital Expenditures:</strong> {{ first_report['capitalExpenditures'] }}</li>
-                <li><strong>Change in Receivables:</strong> {{ first_report['changeInReceivables'] }}</li>
-                <li><strong>Change in Inventory:</strong> {{ first_report['changeInInventory'] }}</li>
-                <li><strong>Profit/Loss:</strong> {{ first_report['profitLoss'] }}</li>
-                <li><strong>Cashflow from Investment:</strong> {{ first_report['cashflowFromInvestment'] }}</li>
-                <li><strong>Cashflow from Financing:</strong> {{ first_report['cashflowFromFinancing'] }}</li>
-                <li><strong>Proceeds from Repayments of Short-Term Debt:</strong> {{ first_report['proceedsFromRepaymentsOfShortTermDebt'] }}</li>
-                <li><strong>Payments for Repurchase of Common Stock:</strong> {{ first_report['paymentsForRepurchaseOfCommonStock'] }}</li>
-                <li><strong>Payments for Repurchase of Equity:</strong> {{ first_report['paymentsForRepurchaseOfEquity'] }}</li>
-                <li><strong>Payments for Repurchase of Preferred Stock:</strong> {{ first_report['paymentsForRepurchaseOfPreferredStock'] }}</li>
-                <li><strong>Dividend Payout:</strong> {{ first_report['dividendPayout'] }}</li>
-                <li><strong>Dividend Payout (Common Stock):</strong> {{ first_report['dividendPayoutCommonStock'] }}</li>
-                <li><strong>Dividend Payout (Preferred Stock):</strong> {{ first_report['dividendPayoutPreferredStock'] }}</li>
-                <li><strong>Proceeds from Issuance of Common Stock:</strong> {{ first_report['proceedsFromIssuanceOfCommonStock'] }}</li>
-                <li><strong>Proceeds from Issuance of Long-Term Debt and Capital Securities Net:</strong> {{ first_report['proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet'] }}</li>
-                <li><strong>Proceeds from Issuance of Preferred Stock:</strong> {{ first_report['proceedsFromIssuanceOfPreferredStock'] }}</li>
-                <li><strong>Proceeds from Repurchase of Equity:</strong> {{ first_report['proceedsFromRepurchaseOfEquity'] }}</li>
-                <li><strong>Proceeds from Sale of Treasury Stock:</strong> {{ first_report['proceedsFromSaleOfTreasuryStock'] }}</li>
-                <li><strong>Net Income:</strong> {{ first_report['netIncome'] }}</li>
-            {% else %}
-                <li>No annual report available</li>
-            {% endif %}
+            <li><strong>Symbol:</strong> {{ overview_data1['Symbol'] }}</li>
+            {% for key, value in overview_data1.items() %}
+                {% if key not in ['Description', 'Address', 'Name', 'Symbol', 'Exchange', 'Country', 'CIK', 'Sector', 'Industry', 'FiscalYearEnd', 'LatestQuarter', 'AssetType', 'Currency'] %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endif %}
+            {% endfor %}
         </ul>
         </div>
         <div class="overview">
-        <h2>Overview {{ overview_data2['symbol'] }}</h2>
+        <h2>Overview {{ overview_data2['Name'] }}</h2>
         <ul>
-            <li><strong>Symbol:</strong> {{ overview_data2['symbol'] }}</li>
-            {% if 'annualReports' in overview_data2 %}
-                {% set first_report = overview_data2['annualReports'][0] %}
-                <li><strong>Fiscal Date Ending:</strong> {{ first_report['fiscalDateEnding'] }}</li>
-                <li><strong>Reported Currency:</strong> {{ first_report['reportedCurrency'] }}</li>
-                <li><strong>Operating Cashflow:</strong> {{ first_report['operatingCashflow'] }}</li>
-                <li><strong>Payments for Operating Activities:</strong> {{ first_report['paymentsForOperatingActivities'] }}</li>
-                <li><strong>Proceeds from Operating Activities:</strong> {{ first_report['proceedsFromOperatingActivities'] }}</li>
-                <li><strong>Change in Operating Liabilities:</strong> {{ first_report['changeInOperatingLiabilities'] }}</li>
-                <li><strong>Change in Operating Assets:</strong> {{ first_report['changeInOperatingAssets'] }}</li>
-                <li><strong>Depreciation, Depletion, and Amortization:</strong> {{ first_report['depreciationDepletionAndAmortization'] }}</li>
-                <li><strong>Capital Expenditures:</strong> {{ first_report['capitalExpenditures'] }}</li>
-                <li><strong>Change in Receivables:</strong> {{ first_report['changeInReceivables'] }}</li>
-                <li><strong>Change in Inventory:</strong> {{ first_report['changeInInventory'] }}</li>
-                <li><strong>Profit/Loss:</strong> {{ first_report['profitLoss'] }}</li>
-                <li><strong>Cashflow from Investment:</strong> {{ first_report['cashflowFromInvestment'] }}</li>
-                <li><strong>Cashflow from Financing:</strong> {{ first_report['cashflowFromFinancing'] }}</li>
-                <li><strong>Proceeds from Repayments of Short-Term Debt:</strong> {{ first_report['proceedsFromRepaymentsOfShortTermDebt'] }}</li>
-                <li><strong>Payments for Repurchase of Common Stock:</strong> {{ first_report['paymentsForRepurchaseOfCommonStock'] }}</li>
-                <li><strong>Payments for Repurchase of Equity:</strong> {{ first_report['paymentsForRepurchaseOfEquity'] }}</li>
-                <li><strong>Payments for Repurchase of Preferred Stock:</strong> {{ first_report['paymentsForRepurchaseOfPreferredStock'] }}</li>
-                <li><strong>Dividend Payout:</strong> {{ first_report['dividendPayout'] }}</li>
-                <li><strong>Dividend Payout (Common Stock):</strong> {{ first_report['dividendPayoutCommonStock'] }}</li>
-                <li><strong>Dividend Payout (Preferred Stock):</strong> {{ first_report['dividendPayoutPreferredStock'] }}</li>
-                <li><strong>Proceeds from Issuance of Common Stock:</strong> {{ first_report['proceedsFromIssuanceOfCommonStock'] }}</li>
-                <li><strong>Proceeds from Issuance of Long-Term Debt and Capital Securities Net:</strong> {{ first_report['proceedsFromIssuanceOfLongTermDebtAndCapitalSecuritiesNet'] }}</li>
-                <li><strong>Proceeds from Issuance of Preferred Stock:</strong> {{ first_report['proceedsFromIssuanceOfPreferredStock'] }}</li>
-                <li><strong>Proceeds from Repurchase of Equity:</strong> {{ first_report['proceedsFromRepurchaseOfEquity'] }}</li>
-                <li><strong>Proceeds from Sale of Treasury Stock:</strong> {{ first_report['proceedsFromSaleOfTreasuryStock'] }}</li>
-                <li><strong>Net Income:</strong> {{ first_report['netIncome'] }}</li>
-            {% else %}
-                <li>No annual report available</li>
-            {% endif %}
+            <li><strong>Symbol:</strong> {{ overview_data2['Symbol'] }}</li>
+            {% for key, value in overview_data2.items() %}
+                {% if key not in ['Description', 'Address', 'Name', 'Symbol', 'Exchange', 'Country', 'CIK', 'Sector', 'Industry', 'FiscalYearEnd', 'LatestQuarter', 'AssetType', 'Currency'] %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endif %}
+            {% endfor %}
         </ul>
         </div>
     </div>
-    <form method="post" action="/sentiments">
-      <button type="submit" class="view-button">View Sentiments</button>
+    <form method="post" action="/final">
+      <div class="button-container">
+        <button type="submit" class="view-button">View Results</button>
+      </div>
     </form>
 </body>
 </html>

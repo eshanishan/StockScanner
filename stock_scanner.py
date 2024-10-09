@@ -15,7 +15,7 @@ def index():
 @app.route('/analyze', methods=['GET', 'POST'])
 def analyze():
     if request.method == 'POST':
-        return redirect('/sentiments')
+        return redirect('/final')
     data = session['data']
     symbol1 = data.get('Symbol1')
     symbol2 = data.get('Symbol2')
@@ -23,14 +23,17 @@ def analyze():
     overview_data2 = get_overview_data(symbol2)
     return render_template("analyze.html", overview_data1=overview_data1, overview_data2=overview_data2)
 
-@app.route('/sentiments', methods=['GET', 'POST'])
+@app.route('/final', methods=['GET', 'POST'])
 def sentiments():
   data = session['data']
   symbol1 = data.get('Symbol1')
   symbol2 = data.get('Symbol2')
   sentiment_data1 = get_sentiment_data(symbol1)
   sentiment_data2 = get_sentiment_data(symbol2)
-  
+  return render_template("final.html")
+
+@app.route('/sentiments', methods=['GET', 'POST'])
+def sentiments():
   return render_template("sentiments.html")
 
 if __name__ == '__main__':

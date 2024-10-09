@@ -1,3 +1,8 @@
+h1{
+justify-content: center;
+display: flex;
+font-size: 50px;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #333;
@@ -20,7 +25,7 @@ body {
   }
   
   .overview {
-    flex-basis: 48%;
+    flex-basis: 50%;
   }
   
   h2 {
@@ -29,7 +34,7 @@ body {
   
   ul {
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
   }
   
   li {
@@ -39,6 +44,7 @@ body {
   li strong {
     width: 180px;
     display: inline-block;
+    padding-right: 100px;
   }
   
   li:not(:last-child) {
@@ -55,4 +61,9 @@ body {
     cursor: pointer;
     width: 150px;
     align-self: center;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
